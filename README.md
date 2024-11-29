@@ -1,91 +1,56 @@
-# DSA210-proj
+# DSA210-proj: Chess Match Data Analysis
 
-# Chess Match Data Analysis
+## Motivation
 
-## Project Overview
-
-This project involves analyzing chess game data from chess.com to explore various patterns and statistics related to my gameplay. Using Python, Jupyter Notebook, Matplotlib, and Pandas, this analysis aims to provide insights into game rates, win rates, and the factors that influence my chess performance.
-
-## Objective
-
-The main goal of this project is to analyze various aspects of my chess games to understand patterns in:
-
-- Played game rate per color (Black or White)
-- Played game rate per opening
-- Played game rate per time of the day
-- Win rate per color (Black or White)
-- Win rate per opening
-- Win rate considering the number of moves
-- Win rate considering Elo difference
-- Loss rate due to timeout, resignation, or checkmate
-
-## Tools and Libraries
-
-This project makes use of the following Python libraries and tools:
-
-- **Python**: The programming language used to analyze the data.
-- **Jupyter Notebook**: The environment used for writing and running the analysis.
-- **Matplotlib**: Used for visualizing the data with static plots.
-- **Pandas**: Used for data processing, manipulation, and analysis.
-- **NumPy**: Used for numerical operations and calculations.
+The motivation behind this project is to analyze my chess game data from chess.com to uncover patterns and trends that could provide insights into my playing habits and performance. By examining various factors such as the time of day, game color (black or white), openings, Elo ratings, and game duration, this project aims to improve my understanding of my own gameplay and identify areas where I can enhance my performance. Additionally, understanding the impact of game factors like Elo difference and the number of moves on my win rate will provide valuable information for future games.
 
 ## Data Source
 
-The data for this project comes from **chess.com**, where I extracted my game history through their provided API. The data contains various attributes of each game, including:
+The data for this project comes from **chess.com**, where I extracted my game history through their provided API. The dataset includes various attributes of each game, such as:
 
-- Game outcome (win, loss, draw)
-- Player's color (black or white)
-- Elo ratings (both player and opponent)
-- Opening moves
-- Time taken for moves
-- Resignation or timeout details
+- **Game outcome**: win, loss, or draw.
+- **Player’s color**: black or white.
+- **Elo ratings**: both my Elo rating and my opponent's.
+- **Opening moves**: the chess opening used in each game.
+- **Time taken for moves**: the time spent on each move.
+- **Resignation or timeout details**: any instances of timeout or resignation during games.
 
-## Data Processing
-
-The data will be preprocessed to ensure that:
-
-- Irrelevant columns have been removed.
-- Data has been cleaned and structured in a way that makes it easy to analyze.
-- Missing or inconsistent data has been handled appropriately.
-- Opponent usernames are removed to ensure privacy and confidentiality.
+The dataset was processed and cleaned to remove irrelevant columns, handle missing data, and ensure privacy (by removing opponent usernames).
 
 ## Data Analysis
 
-The analysis will focus on the following key areas:
+The analysis focuses on the following areas to explore different aspects of my gameplay:
 
-1. **Played Game Rate per Black or White**: Investigating how often games are played as Black or White.
-2. **Played Game Rate per Opening**: Analyzing the frequency of different chess openings used.
-3. **Played Game Rate per Time of the Day**: Understanding the times of day when I tend to play chess.
-4. **Winrate per Black or White**: Analyzing the win rate based on the color played.
-5. **Win Rate per Opening**: Comparing win rates for different chess openings.
-6. **Win Rate Considering Move Number**: Analyzing how the number of moves influences the win rate.
-7. **Win Rate Considering Elo Difference**: Investigating how Elo differences affect win rates.
-8. **Timeout, Resign, Checkmated Lose Rate**: Understanding the causes of losses in my games (timeout, resignation, or checkmate).
+1. **Played Game Rate per Black or White**: Investigating how often I play as Black or White.
+2. **Played Game Rate per Opening**: Analyzing the frequency of different chess openings used in my games.
+3. **Played Game Rate per Time of the Day**: Understanding at what times of day I play the most chess.
+4. **Winrate per Black or White**: Analyzing my win rate based on the color I play.
+5. **Win Rate per Opening**: Comparing my win rates across various chess openings.
+6. **Win Rate Considering Move Number**: Investigating how the number of moves in a game correlates with my win rate.
+7. **Win Rate Considering Elo Difference**: Analyzing the effect of Elo differences between me and my opponent on win rates.
+8. **Timeout, Resign, Checkmated Lose Rate**: Understanding the factors behind my losses, specifically due to timeout, resignation, or checkmate.
 
+## Findings
 
-## Visualizations
+The analysis aims to provide insights in several key areas, including:
 
-Various visualizations will be created to present the findings, including:
+- **Peak times for playing chess**: Identifying when I tend to play the most.
+- **Successful openings**: Determining which chess openings have the highest win rates.
+- **Elo rating differences**: Understanding how differences in Elo ratings affect my performance.
+- **Loss patterns**: Investigating the common causes of losses, such as timeout, resignation, or checkmate.
 
-- **Histograms**: For visualizing distributions such as game rates per time of day, Elo difference, and game outcomes.
-- **Line Charts**: To track changes over time or the relationship between different factors.
-- **Density Plots**: To show the distribution of Elo ratings for both players.
-- **Bar Charts**: For comparing win rates across different openings, move numbers, and more.
+The detailed analysis is presented with visualizations, such as histograms, bar charts, and line graphs, to convey the results effectively.
 
+## Limitations and Future Work
 
-## Results
+While this analysis provides valuable insights, there are some limitations to consider:
 
-Key findings from the analysis will be summarized here once the project is complete. These may include:
-
-- **Peak times** for playing chess.
-- The **most successful openings** based on win rate.
-- **Patterns in Elo rating differences** and their influence on my performance.
-- Insights into **resignation and timeout** behavior.
-
-## Future Work
+- The data used in this project is limited to the games I’ve played on chess.com, and may not fully represent my overall performance or tendencies across other platforms.
+- The analysis does not take into account external factors such as mood, distractions, or internet connection issues, which may affect performance.
 
 In the future, I plan to expand this analysis by:
 
-- Collecting more data over time to track changes in performance.
-- Analyzing the relationship between move times and performance.
-- Exploring more advanced machine learning models to predict game outcomes based on player statistics.
+- **Collecting more data** over time to observe changes in performance.
+- **Analyzing the relationship between move times** and performance to understand how time management affects my games.
+- **Implementing machine learning models** to predict game outcomes based on player statistics, such as Elo ratings and opening choices.
+- **Expanding the data set** by analyzing games from multiple platforms or online tournaments.

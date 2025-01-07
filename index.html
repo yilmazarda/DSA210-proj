@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Analytics Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="font-bold text-xl text-gray-100">Chess Analytics</span>
+                </div>
+                <div class="space-x-4 hidden md:flex">
+                    <a href="#progress" class="text-gray-300 hover:text-white transition-colors">Progress</a>
+                    <a href="#analysis" class="text-gray-300 hover:text-white transition-colors">Analysis</a>
+                    <a href="#openings" class="text-gray-300 hover:text-white transition-colors">Openings</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gray-800">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h1 class="text-5xl font-extrabold text-gray-100 mb-4 animate__animated animate__fadeIn">
+                Chess Performance Dashboard
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 animate__animated animate__fadeIn animate__delay-1s">
+                Visualizing my chess journey
+            </p>
+            <div class="text-gray-400 animate__animated animate__fadeIn animate__delay-2s">
+                Current Rating: <span class="font-bold text-blue-400">1600+</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-12">
+        <!-- Rating Progress Section -->
+        <section id="progress" class="mb-20">
+            <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-700">
+                <div class="p-8">
+                    <h2 class="text-3xl font-bold text-gray-100 mb-6">Rating Progression</h2>
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="/api/placeholder/800/400" alt="Elo rating progression" class="w-full rounded-lg object-cover">
+                    </div>
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div class="p-4 bg-gray-700 rounded-lg">
+                            <p class="text-sm text-blue-300 font-semibold">Starting Rating</p>
+                            <p class="text-2xl font-bold text-blue-200">600</p>
+                        </div>
+                        <div class="p-4 bg-gray-700 rounded-lg">
+                            <p class="text-sm text-green-300 font-semibold">Current Rating</p>
+                            <p class="text-2xl font-bold text-green-200">1600+</p>
+                        </div>
+                        <div class="p-4 bg-gray-700 rounded-lg">
+                            <p class="text-sm text-purple-300 font-semibold">Rating Gain</p>
+                            <p class="text-2xl font-bold text-purple-200">1000+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Analysis Section -->
+        <section id="analysis" class="mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Win Rate Analysis -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Win Rate by Rating Difference</h3>
+                    <img src="/api/placeholder/600/400" alt="Win rate analysis" class="w-full rounded-lg mb-4">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Higher rating advantage correlates strongly with win rate, reaching 69.2% against lower-rated opponents.</p>
+                    </div>
+                </div>
+
+                <!-- Game Length Distribution -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Game Length Distribution</h3>
+                    <img src="/api/placeholder/600/400" alt="Game length distribution" class="w-full rounded-lg mb-4">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Most games conclude between moves 10-20, with a peak around move 15.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opening Analysis Section -->
+        <section id="openings" class="mb-20">
+            <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                <h2 class="text-3xl font-bold text-gray-100 mb-6">Top Performing Openings</h2>
+                <img src="/api/placeholder/1200/400" alt="Top openings" class="w-full rounded-lg mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Best Opening</h4>
+                        <p class="text-gray-300">Van't Kruijs Opening (75% win rate)</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Most Played</h4>
+                        <p class="text-gray-300">Vienna Game</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Recommended Focus</h4>
+                        <p class="text-gray-300">Philidor Defense variations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Performance Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            <!-- Win Rate by Color -->
+            <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-gray-100 mb-6">Performance by Color</h3>
+                <img src="/api/placeholder/600/400" alt="Color performance" class="w-full rounded-lg mb-4">
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="bg-gray-700 p-4 rounded-lg text-center">
+                        <p class="text-sm text-gray-300">White Win Rate</p>
+                        <p class="text-2xl font-bold text-gray-100">55%</p>
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg text-center">
+                        <p class="text-sm text-gray-300">Black Win Rate</p>
+                        <p class="text-2xl font-bold text-gray-100">47%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loss Analysis -->
+            <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                <h3 class="text-2xl font-bold text-gray-100 mb-6">Loss Analysis</h3>
+                <img src="/api/placeholder/600/400" alt="Loss analysis" class="w-full rounded-lg mb-4">
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <p class="text-gray-300">Majority of losses occur through resignation (50%) and checkmate (43%), indicating active game completion rather than time management issues.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center text-gray-400">
+                <p class="mb-2">Created with ♟️ using chess game analysis data</p>
+                <p class="text-sm">Updated: January 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

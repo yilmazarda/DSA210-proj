@@ -1,102 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head and Navigation sections remain the same -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Analytics Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #1a202c;
-            color: #f7fafc;
-        }
-        nav {
-            background-color: #2d3748;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        nav a {
-            color: #a0aec0;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ffffff;
-        }
-        .hero {
-            background-color: #2d3748;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #f7fafc;
-        }
-        .hero p {
-            font-size: 1.25rem;
-            color: #a0aec0;
-        }
-        section {
-            margin-bottom: 5rem;
-        }
-        .card {
-            background-color: #2d3748;
-            border: 1px solid #4a5568;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
-        }
-        .card h2, .card h3 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #f7fafc;
-        }
-        .card p {
-            color: #a0aec0;
-        }
-        .stats div {
-            background-color: #4a5568;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-align: center;
-        }
-        .stats div p {
-            margin: 0;
-        }
-        footer {
-            background-color: #2d3748;
-            border-top: 1px solid #4a5568;
-            text-align: center;
-            padding: 2rem 0;
-            color: #a0aec0;
-        }
-    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Navigation and Hero sections stay the same -->
+    <nav class="bg-gray-800 shadow-lg">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <span class="font-bold text-xl">Chess Analytics</span>
+                    <span class="font-bold text-xl text-gray-100">Arda Yılmaz - Chess Analytics</span>
                 </div>
                 <div class="space-x-4 hidden md:flex">
-                    <a href="#progress">Progress</a>
-                    <a href="#analysis">Analysis</a>
-                    <a href="#openings">Openings</a>
+                    <a href="#activity" class="text-gray-300 hover:text-white transition-colors">Activity</a>
+                    <a href="#openings" class="text-gray-300 hover:text-white transition-colors">Openings</a>
+                    <a href="#performance" class="text-gray-300 hover:text-white transition-colors">Performance</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero">
+    <div class="bg-gray-800">
         <div class="container mx-auto px-6 py-16 text-center">
-            <h1 class="animate__animated animate__fadeIn">
+            <h1 class="text-5xl font-extrabold text-gray-100 mb-4 animate__animated animate__fadeIn">
                 Chess Performance Dashboard
             </h1>
-            <p class="animate__animated animate__fadeIn animate__delay-1s">
+            <p class="text-xl text-gray-300 mb-8 animate__animated animate__fadeIn animate__delay-1s">
                 Visualizing my chess journey
             </p>
-            <div class="animate__animated animate__fadeIn animate__delay-2s">
+            <div class="text-gray-400 animate__animated animate__fadeIn animate__delay-2s">
                 Current Rating: <span class="font-bold text-blue-400">1600+</span>
             </div>
         </div>
@@ -104,77 +41,137 @@
 
     <!-- Main Content -->
     <div class="container mx-auto px-6 py-12">
-        <!-- Rating Progress Section -->
-        <section id="progress">
-            <div class="card">
-                <h2>Rating Progression</h2>
-                <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_7.png" alt="Rating progression" class="w-full rounded-lg mb-4">
-                <div class="stats grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <p class="text-sm text-blue-300 font-semibold">Starting Rating</p>
-                        <p class="text-2xl font-bold text-blue-200">600</p>
+        <!-- Activity Analysis Section -->
+        <section id="activity" class="mb-20">
+            <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-700">
+                <div class="p-8">
+                    <h2 class="text-3xl font-bold text-gray-100 mb-6">Activity Analysis</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-100 mb-4">Monthly Game Distribution</h3>
+                            <img src="Image 3" alt="Monthly game distribution" class="w-full rounded-lg object-cover mb-4">
+                            <p class="text-gray-300">Peak activity observed in September 2023 with steady engagement throughout the year.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-100 mb-4">Daily Playing Pattern</h3>
+                            <img src="Image 2" alt="Time of day distribution" class="w-full rounded-lg object-cover mb-4">
+                            <p class="text-gray-300">Most active playing hours between 11:00-13:00, with consistent activity throughout the afternoon.</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-sm text-green-300 font-semibold">Current Rating</p>
-                        <p class="text-2xl font-bold text-green-200">1600+</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div class="p-4 bg-gray-700 rounded-lg">
+                            <p class="text-sm text-blue-300 font-semibold">Starting Rating</p>
+                            <p class="text-2xl font-bold text-blue-200">600</p>
+                        </div>
+                        <div class="p-4 bg-gray-700 rounded-lg">
+                            <p class="text-sm text-green-300 font-semibold">Current Rating</p>
+                            <p class="text-2xl font-bold text-green-200">1600+</p>
+                        </div>
+                        <div class="p-4 bg-gray-700 rounded-lg">
+                            <p class="text-sm text-purple-300 font-semibold">Rating Gain</p>
+                            <p class="text-2xl font-bold text-purple-200">1000+</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-sm text-purple-300 font-semibold">Rating Gain</p>
-                        <p class="text-2xl font-bold text-purple-200">1000+</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opening Analysis Section -->
+        <section id="openings" class="mb-20">
+            <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                <h2 class="text-3xl font-bold text-gray-100 mb-6">Opening Analysis</h2>
+                <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_4.png" alt="Top openings" class="w-full rounded-lg mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Best Opening</h4>
+                        <p class="text-gray-300">Van't Kruijs Opening (75% win rate)</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Most Played</h4>
+                        <p class="text-gray-300">Vienna Game</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Recommended Focus</h4>
+                        <p class="text-gray-300">Philidor Defense variations</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Performance Analysis Section -->
-        <section id="analysis">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card">
-                    <h3>Win Rate by Rating Difference</h3>
+        <section id="performance" class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-100 mb-6">Performance Analysis</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Game Length Distribution -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Game Length Distribution</h3>
+                    <img src="Image 1" alt="Game length distribution" class="w-full rounded-lg mb-4">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Games typically peak around 15-20 moves, with a gradual decline in frequency for longer games.</p>
+                    </div>
+                </div>
+
+                <!-- Win Rate Analysis -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Win Rate by Rating Difference</h3>
                     <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_5.png" alt="Win rate analysis" class="w-full rounded-lg mb-4">
-                    <p>A higher rating advantage is strongly correlated with a higher win rate, with players holding a rating advantage winning 69.2% of the time against lower-rated opponents. This demonstrates the significant impact of rating on success in chess matches.</p>
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Higher rating advantage correlates strongly with win rate, reaching 69.2% against lower-rated opponents.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Win Rate by Castling Type</h3>
+
+                <!-- Win Rate by Castling Type -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Win Rate by Castling Type</h3>
                     <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_6.png" alt="Win Rate by Castling Type" class="w-full rounded-lg mb-4">
-                    <p>Queenside castling demonstrates a marginally higher success rate compared to Kingside castling.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Loss Analysis Section -->
-        <section id="loss-analysis">
-            <div class="card">
-                <h3>Loss Analysis</h3>
-                <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_1.png" alt="Loss analysis" class="w-full rounded-lg mb-4">
-                <div class="bg-gray-700 p-4 rounded-lg">
-                    <p class="text-gray-300">Majority of losses occur through resignation (50%) and checkmate (43%), indicating active game completion rather than time management issues.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Opening Analysis Section -->
-        <section id="openings">
-            <div class="card">
-                <h2>Top Performing Openings</h2>
-                <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_4.png" alt="Top openings" class="w-full rounded-lg mb-6">
-                <div class="stats grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                        <h4>Best Opening</h4>
-                        <p>Van't Kruijs Opening (75% win rate)</p>
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Queenside castling shows slightly higher success rates than Kingside castling. No-castling games have the lowest win rates.</p>
                     </div>
-                    <div>
-                        <h4>Most Played</h4>
-                        <p>Vienna Game</p>
+                </div>
+
+                <!-- Performance by Color -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Performance by Color</h3>
+                    <img src="/api/placeholder/600/400" alt="Color performance" class="w-full rounded-lg mb-4">
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="bg-gray-700 p-4 rounded-lg text-center">
+                            <p class="text-sm text-gray-300">White Win Rate</p>
+                            <p class="text-2xl font-bold text-gray-100">55%</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg text-center">
+                            <p class="text-sm text-gray-300">Black Win Rate</p>
+                            <p class="text-2xl font-bold text-gray-100">47%</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4>Recommended Focus</h4>
-                        <p>Philidor Defense variations</p>
+                </div>
+
+                <!-- Loss Analysis -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Loss Analysis</h3>
+                    <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_1.png" alt="Loss analysis" class="w-full rounded-lg mb-4">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Majority of losses occur through resignation (50%) and checkmate (43%), indicating active game completion rather than time management issues.</p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center text-gray-400">
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="https://github.com/yilmazarda" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/arda-y%C4%B1lmaz-93a0b7229/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
 </body>
 </html>

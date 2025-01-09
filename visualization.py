@@ -213,11 +213,67 @@ def plot_losses(df):
     plt.tight_layout()
     plt.show()
 
+def plot_percentage_games_per_month_from_2023(df):
+    """
+    Plots the percentage of games played per month starting from 2023.
+    """
+    # Convert 'time' column to datetime if not already
+    df['time'] = pd.to_datetime(df['time'], errors='coerce')
+    
+    # Filter for games starting from 2023
+    df = df[df['time'] >= pd.Timestamp("2023-01-01")]
+    
+    # Extract year and month for grouping
+    df['year_month'] = df['time'].dt.to_period('M')
+    
+    # Count games by month and calculate percentages
+    games_per_month = df['year_month'].value_counts().sort_index()
+    games_per_month_percentage = (games_per_month / games_per_month.sum()) * 100
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    games_per_month_percentage.plot(kind='bar', color='skyblue')
+    plt.title("Percentage of Games Played Per Month (From 2023)")
+    plt.xlabel("Month")
+    plt.ylabel("Percentage (%)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_percentage_games_by_time_of_day(df):
+    """
+    Plots the percentage of games played by time of day.
+    """
+    # Convert 'time' column to datetime if not already
+    df['time'] = pd.to_datetime(df['time'], errors='coerce')
+    
+    # Extract the hour from the datetime
+    df['hour'] = df['time'].dt.hour
+    
+    # Count games by hour and calculate percentages
+    games_by_hour = df['hour'].value_counts().sort_index()
+    games_by_hour_percentage = (games_by_hour / games_by_hour.sum()) * 100
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    games_by_hour_percentage.plot(kind='bar', color='orange')
+    plt.title("Percentage of Games Played by Time of Day")
+    plt.xlabel("Hour of the Day")
+    plt.ylabel("Percentage (%)")
+    plt.xticks(range(0, 24), labels=[f'{i}:00' for i in range(24)], rotation=45)
+    plt.tight_layout()
+    plt.show()
+
 
 if __name__ == "__main__":
     # Load the cleaned game data
     df = load_data()
 
+    plot_percentage_games_by_time_of_day(df)
+    plot_percentage_games_per_month_from_2023(df)
+    
+    
     plot_losses(df)
     # Perform analysis and plotting
     analyze_win_rate_by_color(df)
@@ -233,5 +289,7 @@ if __name__ == "__main__":
 
     plot_elo_rating_progression(df)
     plot_distribution_game_length(df)
+
+   
 
     

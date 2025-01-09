@@ -164,7 +164,21 @@ def analyze_castling_impact_on_win_rate(df):
     df["castling"] = df["moves"].apply(categorize_castling)
 
     # Create a new column for win rate, with wins as 1, draws as 0.5, and losses as 0
-    df["win"] = df["result"].apply(lambda x: 1 if x == "win" else (0.5 if x == "agreed" else 0))
+    df["win"] = df["result"].apply(lambda x: 1 if x == "win" else (0.5 if x == "agreed" else 0)) 
+
+    # Group win rates by castling category
+    kingside = df[df["castling"] == "Kingside Castled"]["win"]
+    queenside = df[df["castling"] == "Queenside Castled"]["win"]
+    not_castled = df[df["castling"] == "Not Castled"]["win"]
+
+    # Perform ANOVA test
+    f_stat, p_value = f_oneway(kingside, queenside, not_castled)
+
+    print(f"F-statistic: {f_stat}, P-value: {p_value}")
+    if p_value < 0.05:
+        print("The difference in win rate between castling categories is statistically significant.")
+    else:
+        print("The difference in win rate between castling categories is not statistically significant.")
 
 
 def analyze_castling_effect(df):

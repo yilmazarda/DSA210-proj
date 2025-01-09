@@ -53,9 +53,9 @@
                             <p class="text-gray-300">Peak activity observed in September 2023 with steady engagement throughout the year.</p>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-gray-100 mb-4">Daily Playing Pattern</h3>
-                            <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_8.png" alt="Time of day distribution" class="w-full rounded-lg object-cover mb-4">
-                            <p class="text-gray-300">Most active playing hours between 11:00-13:00, with consistent activity throughout the afternoon.</p>
+                            <h3 class="text-xl font-bold text-gray-100 mb-4">Daily Game Distribution</h3>
+                            <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_8.png" alt="Daily game disribution" class="w-full rounded-lg object-cover mb-4">
+                            <p class="text-gray-300">Mostly played during noon. Less activity during night hours because i am more likely to be asleep.</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
@@ -71,8 +71,44 @@
                             <p class="text-sm text-purple-300 font-semibold">Rating Gain</p>
                             <p class="text-2xl font-bold text-purple-200">1000+</p>
                         </div>
+                    
                     </div>
                 </div>
+                <details class="mt-4 ml-6">
+                    <summary class="text-blue-400 cursor-pointer hover:text-blue-300">Data extracting and preprocessing details</summary>
+                    <p class="mt-2 text-gray-300">
+                        Data extraction involves obtaining raw chess game data using the Chess.com API.                
+                        The API provides a list of monthly archive URLs for a player's games.
+                        The script iterates through these URLs to fetch all game data for the given username.
+                        Each archive contains games with information like player ratings, results, PGN (Portable Game Notation), and metadata (e.g., start/end time, ECO code for openings).
+                        All games are stored in a JSON file for further preprocessing.                        
+                    </p>
+                    <p class="mt-2 text-gray-300">
+                        Preprocessing converts the raw data into a clean and structured format suitable for analysis.
+                        
+                        Determines whether the user played as white or black.
+                        Captures the opponent’s color and ratings.
+                        Removes the opponents username in order to ensure their privacy.
+
+
+                        Extracts the user's game result (win, loss, or draw).
+
+                        The script extracts the ECO code from the game metadata.
+                        Converts it into a readable format (e.g., "Ruy Lopez" instead of "C60").
+                        
+                        Calculates the total duration of the game using start and end times from the PGN.
+                        Converts duration into a readable format (MM:SS).
+                        
+                        Counts the total number of moves in the game using regex on the PGN string.
+                        
+                        Checks the PGN to determine whether the user or the opponent castled (kingside or queenside).
+                        
+                        Converts the game's end time (epoch format) into a human-readable datetime.
+
+                        Data is filtered thus only "rapid" games are included.
+                        
+                    </p>
+                </details>
             </div>
         </section>
 
@@ -81,31 +117,38 @@
             <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
                 <h2 class="text-3xl font-bold text-gray-100 mb-6">Opening Analysis</h2>
                 <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_4.png" alt="Top openings" class="w-full rounded-lg mb-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
                     <div class="bg-gray-700 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-gray-100">Best Opening</h4>
+                        <h4 class="font-bold text-lg mb-2 text-gray-100">Opening with the highest winrate</h4>
                         <p class="text-gray-300">Van't Kruijs Opening (75% win rate)</p>
-                    </div>
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-gray-100">Most Played</h4>
-                        <p class="text-gray-300">Vienna Game</p>
-                    </div>
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-gray-100">Recommended Focus</h4>
-                        <p class="text-gray-300">Philidor Defense variations</p>
                     </div>
                 </div>
                 <details class="mt-4">
                     <summary class="text-blue-400 cursor-pointer hover:text-blue-300">P-Value Hypothesis Testing Details</summary>
-                    <p class="mt-2 text-gray-300">
-                        A hypothesis test was conducted to determine if the win rate significantly differs based on rating advantage. 
-                        The null hypothesis (H<sub>0</sub>) stated that there is no significant difference in win rates regardless of rating advantage. 
-                        The alternative hypothesis (H<sub>a</sub>) proposed that a higher rating advantage results in a significantly higher win rate.
-                    </p>
-                    <p class="mt-2 text-gray-300">
-                        Using a significance level of 0.05, the T-test yielded a p-value of <strong>0.003</strong>, leading to the rejection of H<sub>0</sub>. 
-                        This confirms a strong correlation between rating advantage and win rate.
-                    </p>
+                    <div class="mt-4 space-y-3">
+                        <p class="text-gray-300">
+                            I analyzed whether my choice of chess opening significantly affects my win rate using ANOVA. 
+                            First, I create a numeric "win" column where wins are 1, draws are 0.5, and losses are 0. 
+                            Then, I filter out openings that I have played less than 10 times to ensure I have enough data for meaningful analysis. 
+                            For the remaining openings, I group my games by opening and calculate the win rates for each. 
+                            Using an ANOVA test, I compute the F-statistic and p-value to determine if there are significant differences in win rates between openings. 
+                        </p>
+                        <p class="text-gray-300">
+                            <span class="font-semibold">Null Hypothesis (H<sub>0</sub>):</span>
+                            There is no significant difference in win rates between opening choices
+                        </p>
+                        <p class="text-gray-300">
+                            <span class="font-semibold">Alternative Hypothesis (H<sub>a</sub>):</span>
+                            Different opening choices lead to significantly different win rates
+                        </p>
+                        <div class="bg-gray-600 p-3 rounded-md mt-2">
+                            <p class="text-gray-200"><span class="font-semibold">P-Value:</span> 0.11</p>
+                            <p class="text-gray-200 mt-2">
+                                <span class="font-semibold">Conclusion:</span>
+                                With p > 0.05, we fail to reject the null hypothesis. Different opening choices do not show statistically significant differences in win rates.
+                            </p>
+                        </div>
+                    </div>
                 </details>
             </div>
         </section>
@@ -116,6 +159,42 @@
             <div class="grid grid-cols-1 lg:grid-cols-1 gap-8 mb-8">
 
 
+                <!-- Time of the day Analysis -->
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6">Win Rate by Time of the Day</h3>
+                    <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_8.png" alt="Win rate analysis" class="w-full rounded-lg mb-4">
+                    <div class="bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-300">Most active playing hours between 11:00-13:00, with consistent activity throughout the afternoon.</p>
+                        <details class="mt-4">
+                            <summary class="text-blue-400 cursor-pointer hover:text-blue-300">P-Value Hypothesis Testing Details</summary>
+                            <div class="mt-4 space-y-3">
+                                <p class="text-gray-300">
+                                    I analyzed the impact of the time of day on win rate by first converting the 'time' column to a datetime format and extracting the hour of the day. 
+                                    Then I categorized the hours into four parts of the day: "Morning" (0-9), "Afternoon" (9-17), "Evening" (17-21), and "Night" (21-24). 
+                                    I also created a new column for win rate, where a win is marked as 1 and a loss as 0. 
+                                    Then I calculated the average win rate for each time of day and print the results. 
+                                    Finally I performed a two-sample t-test to compare win rates between the morning/afternoon group (hours ≤ 17) and the evening/night group (hours > 17). 
+                                </p>
+                                <p class="text-gray-300">
+                                    <span class="font-semibold">Null Hypothesis (H<sub>0</sub>):</span>
+                                    There is no significant difference in win rates between playing in different times of day
+                                </p>
+                                <p class="text-gray-300">
+                                    <span class="font-semibold">Alternative Hypothesis (H<sub>a</sub>):</span>
+                                    Playing in different times of day lead to significantly different win rates
+                                </p>
+                                <div class="bg-gray-600 p-3 rounded-md mt-2">
+                                    <p class="text-gray-200"><span class="font-semibold">P-Value:</span> 0.86</p>
+                                    <p class="text-gray-200 mt-2">
+                                        <span class="font-semibold">Conclusion:</span>
+                                        With p > 0.05, we fail to reject the null hypothesis. Playing in different times of day do not show statistically significant differences in win rates.
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
                 <!-- Win Rate Analysis -->
                 <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
                     <h3 class="text-2xl font-bold text-gray-100 mb-6">Win Rate by Rating Difference</h3>
@@ -124,15 +203,28 @@
                         <p class="text-gray-300">Higher rating advantage correlates strongly with win rate, reaching 69.2% against lower-rated opponents.</p>
                         <details class="mt-4">
                             <summary class="text-blue-400 cursor-pointer hover:text-blue-300">P-Value Hypothesis Testing Details</summary>
-                            <p class="mt-2 text-gray-300">
-                                A hypothesis test was conducted to determine if the win rate significantly differs based on rating advantage. 
-                                The null hypothesis (H<sub>0</sub>) stated that there is no significant difference in win rates regardless of rating advantage. 
-                                The alternative hypothesis (H<sub>a</sub>) proposed that a higher rating advantage results in a significantly higher win rate.
-                            </p>
-                            <p class="mt-2 text-gray-300">
-                                Using a significance level of 0.05, the T-test yielded a p-value of <strong>0.003</strong>, leading to the rejection of H<sub>0</sub>. 
-                                This confirms a strong correlation between rating advantage and win rate.
-                            </p>
+                            <div class="mt-4 space-y-3">
+                                <p class="text-gray-300">
+                                    I analyzed the impact of elo difference on win rate by first calculating the Elo difference based on the player's color (white or black) and computed the win rate, where a win is represented by 1, a draw by 0.5, and a loss by 0.
+                                    I categorized the Elo difference into bins and calculate the average win rate for each bin. 
+                                    I also performed a one-way ANOVA test to assess if there is a statistically significant effect of Elo difference on win rate, printing the results of the test and providing a conclusion based on the p-value. 
+                                </p>
+                                <p class="text-gray-300">
+                                    <span class="font-semibold">Null Hypothesis (H<sub>0</sub>):</span>
+                                    There is no significant difference in win rates between different rating differences
+                                </p>
+                                <p class="text-gray-300">
+                                    <span class="font-semibold">Alternative Hypothesis (H<sub>a</sub>):</span>
+                                    Different rating differences lead to significantly different win rates
+                                </p>
+                                <div class="bg-gray-600 p-3 rounded-md mt-2">
+                                    <p class="text-gray-200"><span class="font-semibold">P-Value:</span> 1.06e-52</p>
+                                    <p class="text-gray-200 mt-2">
+                                        <span class="font-semibold">Conclusion:</span>
+                                        With p < 0.05, we reject the null hypothesis. Different rating differences show statistically significant differences in win rates.
+                                    </p>
+                                </div>
+                            </div>
                         </details>
                     </div>
                 </div>
@@ -144,8 +236,13 @@
                     <div class="bg-gray-700 p-4 rounded-lg">
                         <p class="text-gray-300">Queenside castling shows slightly higher success rates than Kingside castling. No-castling games have the lowest win rates.</p>
                         <details class="mt-4">
-                            <summary class="text-blue-400 cursor-pointer hover:text-blue-300">Statistical Analysis Details</summary>
+                            <summary class="text-blue-400 cursor-pointer hover:text-blue-300">P-Value Hypothesis Testing Details</summary>
                             <div class="mt-4 space-y-3">
+                                <p class="text-gray-300">
+                                    I analyzed the impact of castling (kingside, queenside, or no castling) on win rate by creating a new column to categorize the castling type based on the moves in the game: "Kingside Castled" for kingside castling, "Queenside Castled" for queenside castling, and "Not Castled" for games where castling did not occur. 
+                                    I also created a new column for win rate, where wins are marked as 1, draws as 0.5, and losses as 0. 
+                                    Finally I grouped the data by the castling categories and perform an ANOVA test to compare the win rates across the three groups. 
+                                </p>
                                 <p class="text-gray-300">
                                     <span class="font-semibold">Null Hypothesis (H<sub>0</sub>):</span>
                                     There is no significant difference in win rates between castling types
@@ -155,15 +252,12 @@
                                     Different castling types lead to significantly different win rates
                                 </p>
                                 <div class="bg-gray-600 p-3 rounded-md mt-2">
-                                    <p class="text-gray-200"><span class="font-semibold">P-Value:</span> 0.042</p>
+                                    <p class="text-gray-200"><span class="font-semibold">P-Value:</span> 0.0624</p>
                                     <p class="text-gray-200 mt-2">
                                         <span class="font-semibold">Conclusion:</span>
-                                        With p < 0.05, we reject the null hypothesis. Different castling types show statistically significant differences in win rates.
+                                        With p > 0.05, we fail to reject the null hypothesis. Different castling types do not show statistically significant differences in win rates.
                                     </p>
                                 </div>
-                                <p class="text-gray-400 text-sm">
-                                    <span class="font-semibold">Method:</span> ANOVA with α = 0.05
-                                </p>
                             </div>
                         </details>
                     </div>
@@ -185,15 +279,27 @@
                     </div>
                     <details class="mt-4">
                         <summary class="text-blue-400 cursor-pointer hover:text-blue-300">P-Value Hypothesis Testing Details</summary>
-                        <p class="mt-2 text-gray-300">
-                            A hypothesis test was conducted to determine if the win rate significantly differs based on rating advantage. 
-                            The null hypothesis (H<sub>0</sub>) stated that there is no significant difference in win rates regardless of rating advantage. 
-                            The alternative hypothesis (H<sub>a</sub>) proposed that a higher rating advantage results in a significantly higher win rate.
-                        </p>
-                        <p class="mt-2 text-gray-300">
-                            Using a significance level of 0.05, the T-test yielded a p-value of <strong>0.003</strong>, leading to the rejection of H<sub>0</sub>. 
-                            This confirms a strong correlation between rating advantage and win rate.
-                        </p>
+                        <div class="mt-4 space-y-3">
+                            <p class="text-gray-300">
+                                I analyzed the impact of playing white or black on win rate. First I started by creating a new column for win rate, assigning a value of 1 for wins, 0.5 for draws, and 0 for losses. 
+                                I separated the win rates for white and black players and perform a two-sample t-test to compare the mean win rates between the two groups.  
+                            </p>
+                            <p class="text-gray-300">
+                                <span class="font-semibold">Null Hypothesis (H<sub>0</sub>):</span>
+                                There is no significant difference in win rates between playing different colors
+                            </p>
+                            <p class="text-gray-300">
+                                <span class="font-semibold">Alternative Hypothesis (H<sub>a</sub>):</span>
+                                Playing different colors lead to significantly different win rates
+                            </p>
+                            <div class="bg-gray-600 p-3 rounded-md mt-2">
+                                <p class="text-gray-200"><span class="font-semibold">P-Value:</span> 0.004</p>
+                                <p class="text-gray-200 mt-2">
+                                    <span class="font-semibold">Conclusion:</span>
+                                    With p < 0.05, we reject the null hypothesis. Playing different colors show statistically significant differences in win rates.
+                                </p>
+                            </div>
+                        </div>
                     </details>
                 </div>
                 
@@ -201,7 +307,7 @@
                 <!-- Loss Analysis -->
                 <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
                     <h3 class="text-2xl font-bold text-gray-100 mb-6">Loss Analysis</h3>
-                    <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_1.png" alt="Loss analysis" class="w-full rounded-lg mb-4">
+                    <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_3.png" alt="Loss analysis" class="w-full rounded-lg mb-4">
                     <div class="bg-gray-700 p-4 rounded-lg">
                         <p class="text-gray-300">Majority of losses occur through resignation (50%) and checkmate (43%), indicating active game completion rather than time management issues.</p>
                     </div>
@@ -210,7 +316,7 @@
                 <!-- Game Length Distribution -->
                 <div class="bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-700">
                     <h3 class="text-2xl font-bold text-gray-100 mb-6">Game Length Distribution</h3>
-                    <img src="https://raw.githubusercontent.com/yilmazarda/DSA210-proj/refs/heads/main/figures/Figure_3.png" alt="Game length distribution" class="w-full rounded-lg mb-4">
+                    <img src="Image 1" alt="Game length distribution" class="w-full rounded-lg mb-4">
                     <div class="bg-gray-700 p-4 rounded-lg">
                         <p class="text-gray-300">Games typically peak around 15-20 moves, with a gradual decline in frequency for longer games.</p>
                     </div>

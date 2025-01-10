@@ -1,6 +1,6 @@
 # DSA210-proj: Chess Match Data Analysis
 
-[Web site for the project.](https://yilmazarda.github.io/DSA210-proj/)
+[WEB SITE FOR THE PROJECT](https://yilmazarda.github.io/DSA210-proj/)
 
 ## Motivation
 

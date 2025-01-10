@@ -4,7 +4,7 @@
 
 ## Motivation
 
-The motivation behind this project is to analyze my chess game data from chess.com to uncover patterns and trends that could provide insights into my playing habits and performance. By examining various factors such as the time of day, game color (black or white), openings, Elo ratings, and game duration, this project aims to improve my understanding of my own gameplay and identify areas where I can enhance my performance. Additionally, understanding the impact of game factors like Elo difference and the number of moves on my win rate will provide valuable information for future games.
+The motivation behind this project is to analyze my chess game data from chess.com to uncover patterns and trends that could provide insights into my playing habits and performance. By examining various factors such as the time of day, game color (black or white), openings, Elo ratings, and game duration, this project aims to improve my understanding of my own gameplay and identify areas where I can enhance my performance. Additionally, understanding the impact of game factors like Elo difference on my win rate will provide valuable information for future games.
 
 ## Data Source
 
@@ -16,7 +16,7 @@ The data for this project comes from **chess.com**, where I extracted my game hi
 - **Moves**: the chess moves used in each game.
 - **Resignation or timeout details**: any instances of timeout or resignation during games.
 
-The dataset was processed and cleaned to remove irrelevant columns, handle missing data, and ensure privacy (by removing opponent usernames).
+The dataset was processed and cleaned to remove irrelevant columns and ensure privacy (by removing opponent usernames).
 
 ## Hypothesis
 

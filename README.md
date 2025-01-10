@@ -22,9 +22,9 @@ The dataset was processed and cleaned to remove irrelevant columns and ensure pr
 
 My hypothesis: My win rate changes according to the time of day.
 
-## Findings
+## Data analysis and Findings
 
-[Visit web site for findings.](https://yilmazarda.github.io/DSA210-proj/)
+[Visit web site for data analysis and findings.](https://yilmazarda.github.io/DSA210-proj/)
 
 ## Limitations and Future Work
 

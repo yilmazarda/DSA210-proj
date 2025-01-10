@@ -1,5 +1,7 @@
 # DSA210-proj: Chess Match Data Analysis
 
+[Web site for the project](https://yilmazarda.github.io/DSA210-proj/)
+
 ## Motivation
 
 The motivation behind this project is to analyze my chess game data from chess.com to uncover patterns and trends that could provide insights into my playing habits and performance. By examining various factors such as the time of day, game color (black or white), openings, Elo ratings, and game duration, this project aims to improve my understanding of my own gameplay and identify areas where I can enhance my performance. Additionally, understanding the impact of game factors like Elo difference and the number of moves on my win rate will provide valuable information for future games.
@@ -26,7 +28,7 @@ The analysis focuses on the following areas to explore different aspects of my g
 3. **Played Game Rate per Time of the Day**: Understanding at what times of day I play the most chess.
 4. **Winrate per Black or White**: Analyzing my win rate based on the color I play.
 5. **Win Rate per Opening**: Comparing my win rates across various chess openings.
-6. **Win Rate Considering Move Number**: Investigating how the number of moves in a game correlates with my win rate.
+6. **Average Game Length Considering Move Number**: Investigating how the number of moves in a game correlates with my win rate.
 7. **Win Rate Considering Elo Difference**: Analyzing the effect of Elo differences between me and my opponent on win rates.
 8. **Timeout, Resign, Checkmated Lose Rate**: Understanding the factors behind my losses, specifically due to timeout, resignation, or checkmate.
 

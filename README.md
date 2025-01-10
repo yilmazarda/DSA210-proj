@@ -1,6 +1,6 @@
 # DSA210-proj: Chess Match Data Analysis
 
-[Web site for the project](https://yilmazarda.github.io/DSA210-proj/)
+[Web site for the project.](https://yilmazarda.github.io/DSA210-proj/)
 
 ## Motivation
 
@@ -13,35 +13,18 @@ The data for this project comes from **chess.com**, where I extracted my game hi
 - **Game outcome**: win, loss, or draw.
 - **Player’s color**: black or white.
 - **Elo ratings**: both my Elo rating and my opponent's.
-- **Opening moves**: the chess opening used in each game.
-- **Time taken for moves**: the time spent on each move.
+- **Moves**: the chess moves used in each game.
 - **Resignation or timeout details**: any instances of timeout or resignation during games.
 
 The dataset was processed and cleaned to remove irrelevant columns, handle missing data, and ensure privacy (by removing opponent usernames).
 
-## Data Analysis
+## Hypothesis
 
-The analysis focuses on the following areas to explore different aspects of my gameplay:
-
-1. **Played Game Rate per Black or White**: Investigating how often I play as Black or White.
-2. **Played Game Rate per Opening**: Analyzing the frequency of different chess openings used in my games.
-3. **Played Game Rate per Time of the Day**: Understanding at what times of day I play the most chess.
-4. **Winrate per Black or White**: Analyzing my win rate based on the color I play.
-5. **Win Rate per Opening**: Comparing my win rates across various chess openings.
-6. **Average Game Length Considering Move Number**: Investigating how the number of moves in a game correlates with my win rate.
-7. **Win Rate Considering Elo Difference**: Analyzing the effect of Elo differences between me and my opponent on win rates.
-8. **Timeout, Resign, Checkmated Lose Rate**: Understanding the factors behind my losses, specifically due to timeout, resignation, or checkmate.
+My hypothesis: My win rate changes according to the time of day.
 
 ## Findings
 
-The analysis aims to provide insights in several key areas, including:
-
-- **Peak times for playing chess**: Identifying when I tend to play the most.
-- **Successful openings**: Determining which chess openings have the highest win rates.
-- **Elo rating differences**: Understanding how differences in Elo ratings affect my performance.
-- **Loss patterns**: Investigating the common causes of losses, such as timeout, resignation, or checkmate.
-
-The detailed analysis is presented with visualizations, such as histograms, bar charts, and line graphs, to convey the results effectively.
+[Visit web site for findings.](https://yilmazarda.github.io/DSA210-proj/)
 
 ## Limitations and Future Work
 

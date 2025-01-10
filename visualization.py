@@ -241,36 +241,56 @@ def plot_percentage_games_per_month_from_2023(df):
     plt.show()
 
 
-def plot_percentage_games_by_time_of_day(df):
+def plot_win_rate_by_time_of_day(df):
     """
-    Plots the percentage of games played by time of day.
+    Visualizes the win rate by time of day: Morning, Afternoon, Evening, and Night, with different colors for each bar.
     """
     # Convert 'time' column to datetime if not already
-    df['time'] = pd.to_datetime(df['time'], errors='coerce')
+    df["time"] = pd.to_datetime(df["time"], errors="coerce")
+    df = df.dropna(subset=["time"])
     
-    # Extract the hour from the datetime
-    df['hour'] = df['time'].dt.hour
+    # Extract the hour and categorize into time of day
+    df["hour"] = df["time"].dt.hour
+    df["time_of_day"] = pd.cut(
+        df["hour"],
+        bins=[0, 9, 17, 21, 24],
+        labels=["Morning", "Afternoon", "Evening", "Night"],
+        right=False
+    )
     
-    # Count games by hour and calculate percentages
-    games_by_hour = df['hour'].value_counts().sort_index()
-    games_by_hour_percentage = (games_by_hour / games_by_hour.sum()) * 100
-
+    # Create a binary column for wins
+    df["win"] = df["result"].apply(lambda x: 1 if x == "win" else 0)
+    
+    # Calculate win rate by time of day
+    win_rate_by_time_of_day = df.groupby("time_of_day")["win"].mean() * 100
+    
+    # Define custom colors for each bar
+    colors = ["skyblue", "lightgreen", "orange", "violet"]
+    
     # Plot
-    plt.figure(figsize=(10, 6))
-    games_by_hour_percentage.plot(kind='bar', color='orange')
-    plt.title("Percentage of Games Played by Time of Day")
-    plt.xlabel("Hour of the Day")
-    plt.ylabel("Percentage (%)")
-    plt.xticks(range(0, 24), labels=[f'{i}:00' for i in range(24)], rotation=45)
+    plt.figure(figsize=(8, 5))
+    win_rate_by_time_of_day.plot(
+        kind="bar",
+        color=colors,
+        edgecolor="black"
+    )
+    plt.title("Win Rate by Time of Day")
+    plt.xlabel("Time of Day")
+    plt.ylabel("Win Rate (%)")
+    plt.xticks(rotation=0)
     plt.tight_layout()
     plt.show()
+
+
+
+
 
 
 if __name__ == "__main__":
     # Load the cleaned game data
     df = load_data()
 
-    plot_percentage_games_by_time_of_day(df)
+    plot_win_rate_by_time_of_day(df)
     plot_percentage_games_per_month_from_2023(df)
     
     

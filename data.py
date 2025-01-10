@@ -49,7 +49,6 @@ def fetch_all_games(username, output_file="all_chess_games.json"):
     return []
 
 if __name__ == "__main__":
-    # Replace 'your_username' with your Chess.com username
     username = "ardaylmaz"
     
     # Fetch all games and save to a JSON file
